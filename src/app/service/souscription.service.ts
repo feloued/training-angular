@@ -11,8 +11,5 @@ export class SouscriptionService {
   setData(data: QuestionDisplay[]) {
     this.answersQuizz$.next(data);
   }
-  getData(): Observable<QuestionDisplay[]> {
-    return this.answersQuizz$;
-  }
 
 }

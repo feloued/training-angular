@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {QuestionDisplay} from "../../models/question-display.model";
 import {SouscriptionService} from "../../service/souscription.service";
 import {Router} from "@angular/router";

@@ -29,6 +29,7 @@ constructor(private questionService: QuestionService,
 }
 
   findListeQuestions(): void {
+    this.questions = [];
   if(this.filterParam.category && this.filterParam.level )
     this.questionService.findListeQuestion(this.filterParam.category,this.filterParam.level).subscribe(
       {
