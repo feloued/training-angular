@@ -22,7 +22,7 @@ export class ListeQuestionComponent {
   questions: Question[] = [];
   questionsDisplay: QuestionDisplay[] = [];
   answers: Answer[] = [];
-  categories$?:Observable<Categorie[]>
+  categories$?: Observable<Categorie[]>
   filterParam: FilterParameter = new FilterParameter();
 
   levels = LEVEL;
