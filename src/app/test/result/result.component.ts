@@ -17,6 +17,7 @@ export class ResultComponent implements OnInit{
   constructor(private souscriptionService: SouscriptionService,private router:Router) {
   }
   ngOnInit(): void {
+    console.warn("AAAAAAAAAAAAAA");
     this.souscription = this.souscriptionService.getData().subscribe({
       next: data=>{
         this.questionsDisplay = data;
