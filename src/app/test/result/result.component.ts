@@ -26,12 +26,13 @@ export class ResultComponent implements OnInit{
           if(checkElem && checkElem.name == item.correct_answer){
             checkElem.color ="#198754";
             this.score = this.score + 1;
-            console.warn("score :",this.score);
+            console.warn("rentre ici bon :",item);
           }else{
             if(checkElem)
             checkElem.color ="red";
             const trustElem = item.answers?.find(elm=>elm.name == item.correct_answer);
             if(trustElem){
+              console.warn("rentre ici bon :",item);
               trustElem.color ="#198754";
               trustElem.isChecked = true;
             }
