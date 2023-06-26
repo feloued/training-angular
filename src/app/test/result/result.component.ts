@@ -17,16 +17,16 @@ export class ResultComponent implements OnInit{
   constructor(private souscriptionService: SouscriptionService,private router:Router) {
   }
   ngOnInit(): void {
-    this.score = 0;
     this.souscription = this.souscriptionService.getData().subscribe({
       next: data=>{
         this.questionsDisplay = data;
-
+        this.score = 0;
         this.questionsDisplay.forEach(item=>{
           const checkElem = item.answers?.find(elm=>elm.isChecked);
           if(checkElem && checkElem.name == item.correct_answer){
             checkElem.color ="#198754";
             this.score = this.score + 1;
+            console.warn("score :",this.score);
           }else{
             if(checkElem)
             checkElem.color ="red";
@@ -41,7 +41,6 @@ export class ResultComponent implements OnInit{
         this.souscription?.unsubscribe();
       }
     });
-    console.warn("Score",this.score)
   this.getScoreColor();
   }
 
@@ -57,6 +56,6 @@ export class ResultComponent implements OnInit{
   }
 
   goToQuizzPage() {
-    this.router.navigate(['questions']);
+    this.router.navigate(['/questions']);
   }
 }

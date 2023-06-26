@@ -13,5 +13,6 @@ export class Answer implements IAnswer{
     public color?: string,
     public isChecked?: boolean,
     public itemChecked?: string
+
   ){}
 }
