@@ -7,6 +7,7 @@ export interface IQuestionDisplay {
   question?:          string;
   correct_answer?:    string;
   answers?: Answer[];
+  isResponse?: boolean
 }
 
 export class QuestionDisplay implements IQuestionDisplay{
@@ -16,7 +17,8 @@ export class QuestionDisplay implements IQuestionDisplay{
     public difficulty?: string,
     public question?: string,
     public correct_answer?: string,
-    public answers?: Answer[]
+    public answers?: Answer[],
+    public isResponse?: boolean,
 
   ){}
 }

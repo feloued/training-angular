@@ -7,12 +7,12 @@ import {BehaviorSubject, Observable, Subject} from "rxjs";
 })
 export class SouscriptionService {
   constructor() { }
-  private subject = new BehaviorSubject<QuestionDisplay[]>([]);
+  answersQuizz$ = new BehaviorSubject<QuestionDisplay[]>([]);
   setData(data: QuestionDisplay[]) {
-    this.subject.next(data);
+    this.answersQuizz$.next(data);
   }
   getData(): Observable<QuestionDisplay[]> {
-    return this.subject.asObservable();
+    return this.answersQuizz$;
   }
 
 }

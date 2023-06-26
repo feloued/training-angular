@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {map, Observable, Subscription} from "rxjs";
 import {QuestionDisplay} from "../../models/question-display.model";
 import {SouscriptionService} from "../../service/souscription.service";
 import {Router} from "@angular/router";
@@ -13,34 +12,15 @@ export class ResultComponent{
    questionsDisplay: QuestionDisplay[] = [];
    score= 0;
    color='';
-   souscription?: Subscription;
   constructor(private souscriptionService: SouscriptionService,private router:Router) {
   }
   ngOnInit(): void {
-    console.warn("AAAAAAAAAAAAAA");
-    this.souscription = this.souscriptionService.getData().subscribe({
+    this.souscriptionService.answersQuizz$.subscribe({
       next: data=>{
-        this.questionsDisplay = data;
-        this.score = 0;
-        this.questionsDisplay.forEach(item=>{
-          const checkElem = item.answers?.find(elm=>elm.isChecked);
-          if(checkElem && checkElem.name == item.correct_answer){
-            checkElem.color ="#198754";
-            this.score = this.score + 1;
-            console.warn("rentre ici bon :",item);
-          }else{
-            if(checkElem)
-            checkElem.color ="red";
-            const trustElem = item.answers?.find(elm=>elm.name == item.correct_answer);
-            if(trustElem){
-              console.warn("rentre ici choix :",item);
-              trustElem.color ="#198754";
-              trustElem.isChecked = true;
-            }
-          }
-        });
+        this.questionsDisplay = data!;
+        this.score = this.questionsDisplay.filter(x=>x.isResponse == true).length;
       },complete: ()=>{
-        this.souscription?.unsubscribe();
+
       }
     });
   this.getScoreColor();

@@ -7,13 +7,15 @@ import {SouscriptionService} from "../../service/souscription.service";
 import {Router} from "@angular/router";
 import {Categorie} from "../../models/category.model";
 import {FilterParameter} from "../../models/filter-parameter.model";
+import {cloneDeep} from "lodash";
+
 
 @Component({
   selector: 'app-liste-question',
   templateUrl: './liste-question.component.html',
   styleUrls: ['./liste-question.component.css']
 })
-export class ListeQuestionComponent implements OnInit{
+export class ListeQuestionComponent{
 
   questions: Question[] =[];
   questionsDisplay: QuestionDisplay[] =[];
@@ -102,17 +104,32 @@ constructor(private questionService: QuestionService,
   }
 
   goToResult() {
-    this.souscriptionService.setData(this.questionsDisplay);
-    this.router.navigate(['/questions','result']);
+  const questionsDisplayCloned = cloneDeep(this.questionsDisplay);
+
+    questionsDisplayCloned.forEach(item=>{
+      const checkElem = item.answers?.find(elm=>elm.isChecked);
+      if(checkElem && checkElem.name == item.correct_answer){
+        checkElem.color ="#198754";
+        item.isResponse = true;
+      }else{
+        item.isResponse = false;
+        if(checkElem)
+          checkElem.color ="red";
+        const trustElem = item.answers?.find(elm=>elm.name == item.correct_answer);
+        if(trustElem){
+          trustElem.color ="#198754";
+          trustElem.isChecked = true;
+        }
+      }
+    });
+
+    this.souscriptionService.setData(questionsDisplayCloned);
+    this.router.navigate(['questions','result']);
   }
 
   getCategorie(): void{
   this.questionService.findListeCategory().subscribe({
     next: data=>this.categories = data
   })
-  }
-
-  getQuestion() {
-
   }
 }
