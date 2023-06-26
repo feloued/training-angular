@@ -22,7 +22,6 @@ export class ListeQuestionComponent {
   questions: Question[] = [];
   questionsDisplay: QuestionDisplay[] = [];
   answers: Answer[] = [];
-  categories: Categorie[] = [];
   categories$?:Observable<Categorie[]>
   filterParam: FilterParameter = new FilterParameter();
 
@@ -120,11 +119,6 @@ export class ListeQuestionComponent {
   }
 
   goToResult() {
-    /**
-     * This is the get function
-     * @param age This is the age parameter
-     * @returns returns a string version of age
-     */
     const questionsDisplayCloned = cloneDeep(this.questionsDisplay);
     questionsDisplayCloned.forEach(item => {
       const checkElem = item.answers?.find(elm => elm.isChecked);
@@ -144,12 +138,6 @@ export class ListeQuestionComponent {
     });
     this.souscriptionService.setData(questionsDisplayCloned);
     this.router.navigate(['questions', 'result']);
-  }
-
-  getCategorie(): void {
-    this.questionService.findListeCategory().subscribe({
-      next: data => this.categories = data
-    })
   }
 
   trackByQname(index: number, item: QuestionDisplay) {
