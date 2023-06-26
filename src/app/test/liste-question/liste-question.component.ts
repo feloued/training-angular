@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {QuestionService} from "../../service/question.service";
 import {Question} from "../../models/question.model";
 import {QuestionDisplay} from "../../models/question-display.model";
@@ -107,7 +107,6 @@ constructor(private questionService: QuestionService,
 
   goToResult() {
   const questionsDisplayCloned = cloneDeep(this.questionsDisplay);
-
     questionsDisplayCloned.forEach(item=>{
       const checkElem = item.answers?.find(elm=>elm.isChecked);
       if(checkElem && checkElem.name == item.correct_answer){
@@ -124,7 +123,6 @@ constructor(private questionService: QuestionService,
         }
       }
     });
-
     this.souscriptionService.setData(questionsDisplayCloned);
     this.router.navigate(['questions','result']);
   }
