@@ -32,7 +32,7 @@ export class ResultComponent implements OnInit{
             checkElem.color ="red";
             const trustElem = item.answers?.find(elm=>elm.name == item.correct_answer);
             if(trustElem){
-              console.warn("rentre ici bon :",item);
+              console.warn("rentre ici choix :",item);
               trustElem.color ="#198754";
               trustElem.isChecked = true;
             }
