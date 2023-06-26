@@ -1,0 +1,18 @@
+<p class='center'>{{questionDisplay?.question}}</p>
+<div class='container'>
+  <div class="row">
+    <div *ngFor='let answer of questionDisplay?.answers' class="col s6 m4" >
+      <button (click)="selectAnswer(answer)" type="button" class="btn btn-outline-success" [ngStyle]="{'background-color':answer.isChecked? '#198754': '' }"><span [ngStyle]="{'color':answer.isChecked? 'white': '' }">{{ answer.name }}</span></button>
+     <!-- <div class="card horizontal" (click)="selectAnswer(answer)" [ngStyle]="{'background-color':answer.isChecked? 'green': '' }">
+        <div class="card-image" appBorderColorAnswer>
+          <p>{{ answer.name }}</p>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+
+          </div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+</div>

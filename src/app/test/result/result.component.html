@@ -1,0 +1,17 @@
+<div class="container mt-3" >
+  <div class="card">
+    <div class="card-header">
+      Results
+    </div>
+    <div class="card-body">
+     <div class="row" *ngFor="let questionDisplay of questionsDisplay">
+       <p class='center'>{{questionDisplay?.question}}</p>
+       <div *ngFor='let answer of questionDisplay?.answers' class="col s6 m4" >
+         <button  type="button" class="btn btn-outline-success" [ngStyle]="{'background-color':answer.color }"><span [ngStyle]="{'color':answer.isChecked? 'white': '' }">{{ answer.name }}</span></button>
+       </div>
+     </div>
+    </div>
+    <div class="text-center col-md-6 mb-2 offset-3" [ngStyle]="{'background-color':color }">You scored {{score}} of {{questionsDisplay.length}}</div>
+    <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="goToQuizzPage()">Create a new quizz</button>
+  </div>
+</div>
