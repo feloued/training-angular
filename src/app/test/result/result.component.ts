@@ -56,6 +56,6 @@ export class ResultComponent implements OnInit{
   }
 
   goToQuizzPage() {
-    this.router.navigate(['questions']);
+    this.router.navigate(['/questions']);
   }
 }
