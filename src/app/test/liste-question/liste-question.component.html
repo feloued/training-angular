@@ -25,7 +25,7 @@
           </div>
         </div>
       </form>
-      <app-question *ngFor="let item of questionsDisplay" [questionDisplay]="item" (questionEmit)="getValue($event)"></app-question>
+      <app-question *ngFor="let item of questionsDisplay; trackBy: trackByQname" [questionDisplay]="item" (questionEmit)="getValue($event)"></app-question>
     </div>
 
     <button type="button" class="btn btn-secondary offset-2 col-md-6 btn-lg btn-block" *ngIf="isDisplayBtn() && this.questionsDisplay.length>0" (click)="goToResult()">Submit</button>
