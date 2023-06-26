@@ -1,0 +1,37 @@
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header text-center">
+      QUIZZ Marker
+    </div>
+    <div class="card-body">
+      <form #form="ngForm">
+        <div class="row mb-3">
+          <div class="col-md-5">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="categorySelect"
+                    name="categorySelect" [(ngModel)]="filterParam.category" required>
+              <option [ngValue]="undefined">--Category--</option>
+              <option [ngValue]="item.id" *ngFor="let item of categories">{{item.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-5">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="difficultySelect"
+                    name="difficultySelect" [(ngModel)]="filterParam.level" required>
+              <option [ngValue]="undefined">--Difficulty--</option>
+              <option [ngValue]="l.code" *ngFor="let l of levels">{{l.lib}}</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-secondary btn-sm" [disabled]="!form.valid" id="createBtn"
+                    (click)="findListeQuestions()">Create
+            </button>
+          </div>
+        </div>
+      </form>
+      <app-question *ngFor="let item of questionsDisplay; trackBy: trackByQname" [questionDisplay]="item"
+                    (questionEmit)="getValue($event)"></app-question>
+    </div>
+    <button type="button" class="btn btn-secondary btn-sm offset-2 col-md-6 btn-lg btn-block"
+            *ngIf="isDisplayBtn() && this.questionsDisplay.length>0" (click)="goToResult()">Submit
+    </button>
+  </div>
+</div>
