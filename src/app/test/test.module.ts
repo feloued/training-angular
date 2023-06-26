@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { TestRoutingModule } from './test-routing.module';
 import { ListeQuestionComponent } from './liste-question/liste-question.component';
 import { QuestionComponent } from './question/question.component';
-import {BorderColorAnswerDirective} from "../directive/border-color-answer.directive";
 import { ResultComponent } from './result/result.component';
 import {FormsModule} from "@angular/forms";
 
@@ -13,7 +12,6 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     ListeQuestionComponent,
     QuestionComponent,
-    BorderColorAnswerDirective,
     ResultComponent
   ],
     imports: [
