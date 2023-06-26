@@ -9,6 +9,7 @@ import {Categorie} from "../../shared/models/category.model";
 import {FilterParameter} from "../../shared/models/filter-parameter.model";
 import {cloneDeep} from "lodash";
 import {LEVEL} from "../../shared/constants/constant";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -22,6 +23,7 @@ export class ListeQuestionComponent {
   questionsDisplay: QuestionDisplay[] = [];
   answers: Answer[] = [];
   categories: Categorie[] = [];
+  categories$?:Observable<Categorie[]>
   filterParam: FilterParameter = new FilterParameter();
 
   levels = LEVEL;
@@ -50,7 +52,8 @@ export class ListeQuestionComponent {
   }
 
   ngOnInit(): void {
-    this.getCategorie();
+    this.categories$ = this.questionService.categories$;
+    //this.getCategorie();
   }
 
   private transformeData() {

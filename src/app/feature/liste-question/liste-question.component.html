@@ -10,7 +10,7 @@
             <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="categorySelect"
                     name="categorySelect" [(ngModel)]="filterParam.category" required>
               <option [ngValue]="undefined">--Category--</option>
-              <option [ngValue]="item.id" *ngFor="let item of categories">{{item.name}}</option>
+              <option [ngValue]="item.id" *ngFor="let item of categories$ | async">{{item.name}}</option>
             </select>
           </div>
           <div class="col-md-5">

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
 import {Question} from "../models/question.model";
-import {map, Observable} from "rxjs";
+import {BehaviorSubject, map, Observable} from "rxjs";
 import {Results} from "../models/results.model";
 import {TriviaCategorie} from "../models/trivia-categorie.model";
 import {Categorie} from "../models/category.model";
@@ -12,8 +12,18 @@ const categorieUrl= "https://opentdb.com/api_category.php";
   providedIn: 'root'
 })
 export class QuestionService {
+  categories$: BehaviorSubject<Categorie[]> = new BehaviorSubject<Categorie[]>([]);
+  constructor(private http: HttpClient) {
+    this.initListeCategory();
+  }
 
-  constructor(private http: HttpClient) { }
+  initListeCategory(): void {
+    this.findListeCategory().subscribe({
+      next: response => {
+        this.categories$.next(response);
+      }
+    });
+  }
 
   findListeQuestion(category: number, level: string): Observable<Question[]> {
     const params = new HttpParams({
