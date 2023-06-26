@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css']
 })
-export class ResultComponent implements OnInit{
+export class ResultComponent{
    questionsDisplay: QuestionDisplay[] = [];
    score= 0;
    color='';

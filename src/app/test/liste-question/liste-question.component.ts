@@ -44,7 +44,6 @@ constructor(private questionService: QuestionService,
   }
 
   ngOnInit(): void {
-  console.warn("DATA INIT",this.questionsDisplay);
   this.getCategorie();
   //this.findListeQuestions();
   }
