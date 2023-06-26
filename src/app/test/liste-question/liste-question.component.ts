@@ -104,7 +104,7 @@ constructor(private questionService: QuestionService,
 
   goToResult() {
     this.souscriptionService.setData(this.questionsDisplay);
-    this.router.navigate(['questions','result']);
+    this.router.navigate(['/questions','result']);
   }
 
   getCategorie(): void{
