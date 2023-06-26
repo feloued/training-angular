@@ -76,12 +76,22 @@ constructor(private questionService: QuestionService,
         this.answers.push(answ);
 
         // shot order answer
-        this.answers = this.answers.sort((a, b) => 0.5 - Math.random());
+       // this.answers = this.answers.sort((a, b) => 0.5 - Math.random());
+        this.answers = this.randomAnswer(this.answers);
       });
       questionDisplay.answers = this.answers;
       this.questionsDisplay.push(questionDisplay);
-
     });
+}
+
+randomAnswer(data: Answer[]): Answer[]{
+  for (let i = data.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = data[i];
+    data[i] = data[j];
+    data[j] = tmp;
+  }
+  return data;
 }
 
   getValue($event: QuestionDisplay) {
