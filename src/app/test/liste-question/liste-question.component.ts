@@ -52,6 +52,7 @@ constructor(private questionService: QuestionService,
   }
 
   private transformeData() {
+    this.questionsDisplay = [];
     this.questions.forEach(item=>{
       this.answers = [];
       const questionDisplay = new QuestionDisplay();
