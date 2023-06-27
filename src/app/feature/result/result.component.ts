@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {QuestionDisplay} from "../../shared/models/question-display.model";
 import {SouscriptionService} from "../../shared/services/souscription.service";
 import {Router} from "@angular/router";
+import {LocalService} from "../../shared/services/local.service";
 
 @Component({
   selector: 'app-result',
@@ -13,15 +14,23 @@ export class ResultComponent {
   score = 0;
   color = '';
 
-  constructor(private souscriptionService: SouscriptionService, private router: Router) {
+  constructor(private souscriptionService: SouscriptionService, private router: Router, private localService: LocalService) {
   }
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData(): void{
     this.souscriptionService.answersQuizz$.subscribe({
       next: data => {
-        this.questionsDisplay = data!;
+        if(data.length > 0){
+          this.questionsDisplay = data;
+          this.localService.saveData("questionsDisplay",this.questionsDisplay);
+        }else{
+          this.questionsDisplay = this.localService.getData("questionsDisplay");
+        }
         this.score = this.questionsDisplay.filter(x => x.isResponse == true).length;
-      }, complete: () => {
       }
     });
     this.getScoreColor();
@@ -38,6 +47,7 @@ export class ResultComponent {
   }
 
   goToQuizzPage() {
+    this.localService.clearData();
     this.router.navigate(['questions']);
   }
 }

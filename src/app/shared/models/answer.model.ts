@@ -4,7 +4,6 @@ export interface IAnswer {
   name?: string;
   color?: string;
   isChecked?: boolean;
-  itemChecked?: string;
 }
 
 export class Answer implements IAnswer{
@@ -12,7 +11,5 @@ export class Answer implements IAnswer{
     public name?: string,
     public color?: string,
     public isChecked?: boolean,
-    public itemChecked?: string
-
   ){}
 }
