@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {ListeQuestionComponent} from "./liste-question/liste-question.component";
 import {QuestionComponent} from "./question/question.component";
 import {ResultComponent} from "./result/result.component";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {ResultComponent} from "./result/result.component";
   imports: [
     CommonModule,
     FeatureRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class FeatureModule { }

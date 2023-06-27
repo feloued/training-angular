@@ -1,10 +1,10 @@
-<p class='center'>{{questionDisplay?.question}}</p>
+<p class='center'>{{questionDisplay?.question | decode}}</p>
 <div class='container'>
   <div class="row">
     <div *ngFor='let answer of questionDisplay?.answers' class="col s6 m4">
       <button (click)="selectAnswer(answer)" type="button" class="btn btn-outline-success"
               [ngStyle]="{'background-color':answer.isChecked? '#198754': '' }"><span
-        [ngStyle]="{'color':answer.isChecked? 'white': '' }">{{ answer.name }}</span></button>
+        [ngStyle]="{'color':answer.isChecked? 'white': '' }">{{ answer.name | decode}}</span></button>
     </div>
   </div>
 </div>
