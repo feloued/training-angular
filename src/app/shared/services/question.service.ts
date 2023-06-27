@@ -26,6 +26,12 @@ export class QuestionService {
   }
 
   findListeQuestion(category: number, level: string): Observable<Question[]> {
+    /**
+     * This is the get function
+     * @param category This is the category parameter
+     * @param level This is the difficulty parameter
+     * @returns returns all quiz
+     */
     const params = new HttpParams({
       fromObject: {
         amount: 5,
@@ -38,6 +44,10 @@ export class QuestionService {
   }
 
   findListeCategory(): Observable<Categorie[]> {
+    /**
+     * This is the get function
+     * @returns returns all category
+     */
     return this.http.get<TriviaCategorie>(categorieUrl).pipe(map(result=><Categorie[]>result.trivia_categories));
   }
 }

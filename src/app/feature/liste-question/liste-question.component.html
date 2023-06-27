@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="card">
     <div class="card-header text-center">
-      QUIZZ Marker
+      QUIZ MAKER
     </div>
     <div class="card-body">
       <form #form="ngForm">
@@ -9,14 +9,14 @@
           <div class="col-md-5">
             <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="categorySelect"
                     name="categorySelect" [(ngModel)]="filterParam.category" required>
-              <option [ngValue]="undefined">--Category--</option>
+              <option [ngValue]="undefined" selected>Select a category</option>
               <option [ngValue]="item.id" *ngFor="let item of categories$ | async">{{item.name}}</option>
             </select>
           </div>
           <div class="col-md-5">
             <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="difficultySelect"
                     name="difficultySelect" [(ngModel)]="filterParam.level" required>
-              <option [ngValue]="undefined">--Difficulty--</option>
+              <option [ngValue]="undefined" selected>Select difficulty</option>
               <option [ngValue]="l.code" *ngFor="let l of levels">{{l.lib}}</option>
             </select>
           </div>

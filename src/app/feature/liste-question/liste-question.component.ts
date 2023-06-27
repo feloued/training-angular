@@ -32,6 +32,10 @@ export class ListeQuestionComponent {
               private router: Router) {
   }
 
+  ngOnInit(): void {
+    this.categories$ = this.questionService.categories$;
+  }
+
   findListeQuestions(): void {
     this.questions = [];
     if (this.filterParam.category && this.filterParam.level)
@@ -50,10 +54,6 @@ export class ListeQuestionComponent {
         });
   }
 
-  ngOnInit(): void {
-    this.categories$ = this.questionService.categories$;
-    //this.getCategorie();
-  }
 
   private transformeData() {
     this.questionsDisplay = [];
@@ -65,10 +65,12 @@ export class ListeQuestionComponent {
       questionDisplay.category = item.category;
       questionDisplay.type = item.type;
       questionDisplay.correct_answer = item.correct_answer;
+
       /** Construction objet bonne reponse  **/
       const trustedResp = new Answer();
       trustedResp.name = questionDisplay.correct_answer;
       trustedResp.isChecked = false;
+
       /** On insere de l'objet bonne reponse dans la liste des reponses possibles **/
       this.answers.push(trustedResp);
 
