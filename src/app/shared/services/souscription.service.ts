@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {QuestionDisplay} from "../models/question-display.model";
-import {BehaviorSubject, Observable, Subject} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

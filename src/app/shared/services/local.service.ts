@@ -14,7 +14,7 @@ export class LocalService {
     localStorage.setItem(key, this.encrypt(JSON.stringify(data)));
   }
 
-  public getData(key: string) {
+  public getData(key: string):QuestionDisplay[] {
     let data = localStorage.getItem(key)|| "";
     let resp = this.decrypt(data);
     return JSON.parse(resp);
@@ -31,7 +31,7 @@ export class LocalService {
     return CryptoJS.AES.encrypt(txt, this.key).toString();
   }
 
-  private decrypt(txtToDecrypt: string) {
+  private decrypt(txtToDecrypt: string): string {
     return CryptoJS.AES.decrypt(txtToDecrypt, this.key).toString(CryptoJS.enc.Utf8);
   }
 }

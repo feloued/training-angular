@@ -3,14 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'questions',
-    loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule)
-  },
-  {
     path: '',
     redirectTo: 'questions',
     pathMatch: 'full'
   },
+  {
+    path: 'questions',
+    loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule)
+  },
+
   { path: '**', redirectTo: 'questions' }
 
 ];

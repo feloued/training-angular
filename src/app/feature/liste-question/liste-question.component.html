@@ -31,7 +31,7 @@
                     (questionEmit)="getValue($event)"></app-question>
     </div>
     <button type="button" class="btn btn-secondary btn-sm offset-2 col-md-6 btn-lg btn-block"
-            *ngIf="isDisplayBtn() && this.questionsDisplay.length>0" (click)="goToResult()">Submit
+            *ngIf="isDisplayBtn()" (click)="goToResult()">Submit
     </button>
   </div>
 </div>

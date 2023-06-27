@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {QuestionService} from "../../shared/services/question.service";
 import {Question} from "../../shared/models/question.model";
 import {QuestionDisplay} from "../../shared/models/question-display.model";
@@ -9,7 +9,7 @@ import {Categorie} from "../../shared/models/category.model";
 import {FilterParameter} from "../../shared/models/filter-parameter.model";
 import {cloneDeep} from "lodash";
 import {LEVEL} from "../../shared/constants/constant";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 
 @Component({
@@ -17,7 +17,7 @@ import {Observable} from "rxjs";
   templateUrl: './liste-question.component.html',
   styleUrls: ['./liste-question.component.css']
 })
-export class ListeQuestionComponent {
+export class ListeQuestionComponent implements OnInit,OnDestroy{
 
   questions: Question[] = [];
   questionsDisplay: QuestionDisplay[] = [];
@@ -26,6 +26,7 @@ export class ListeQuestionComponent {
   filterParam: FilterParameter = new FilterParameter();
 
   levels = LEVEL;
+  subscription: Subscription = new Subscription();
 
   constructor(private questionService: QuestionService,
               private souscriptionService: SouscriptionService,
@@ -35,11 +36,14 @@ export class ListeQuestionComponent {
   ngOnInit(): void {
     this.categories$ = this.questionService.categories$;
   }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   findListeQuestions(): void {
     this.questions = [];
     if (this.filterParam.category && this.filterParam.level)
-      this.questionService.findListeQuestion(this.filterParam.category, this.filterParam.level).subscribe(
+      this.subscription = this.questionService.findListeQuestion(this.filterParam.category, this.filterParam.level).subscribe(
         {
           next: (result) => {
             if (result) {
@@ -48,9 +52,8 @@ export class ListeQuestionComponent {
               this.transformeData();
             }
           },
-          error: (reason) => {
-            console.error(JSON.stringify(reason));
-          }
+          complete:()=>{},
+          error: () => {}
         });
   }
 
@@ -71,7 +74,7 @@ export class ListeQuestionComponent {
       trustedResp.name = questionDisplay.correct_answer;
       trustedResp.isChecked = false;
 
-      /** On insere de l'objet bonne reponse dans la liste des reponses possibles **/
+      /** Insertion de l'objet bonne reponse dans la liste des reponses possibles **/
       this.answers.push(trustedResp);
 
       /** Reconstruction de la liste des reponses possibles **/
@@ -117,7 +120,7 @@ export class ListeQuestionComponent {
         }
       });
     });
-    return this.questionsDisplay.length == i;
+    return this.questionsDisplay.length == i && this.questionsDisplay.length >0;
   }
 
   goToResult() {
@@ -142,7 +145,7 @@ export class ListeQuestionComponent {
     this.router.navigate(['questions', 'result']);
   }
 
-  trackByQname(index: number, item: QuestionDisplay) {
+  trackByQname(index: number, item: QuestionDisplay): string | undefined {
     return item.question;
   }
 

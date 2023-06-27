@@ -1,5 +1,3 @@
-import {Answer} from "./answer.model";
-import {IQuestionDisplay} from "./question-display.model";
 
 export interface IQuestion {
   category?:          string;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Question} from "../models/question.model";
 import {BehaviorSubject, map, Observable} from "rxjs";
 import {Results} from "../models/results.model";
@@ -45,8 +45,8 @@ export class QuestionService {
 
   findListeCategory(): Observable<Categorie[]> {
     /**
-     * This is the get function
-     * @returns returns all category
+     * This is get function
+     * @returns returns all categories
      */
     return this.http.get<TriviaCategorie>(categorieUrl).pipe(map(result=><Categorie[]>result.trivia_categories));
   }

@@ -14,7 +14,7 @@ export class QuestionComponent {
 
   selectAnswer(answer: Answer) {
     answer.isChecked = true;
-    /** Verification de l'existance d'une question deja selectionnée **/
+    /** Verification de l'existance d'une question déjà selectionnée **/
     const elem = this.questionDisplay?.answers?.find(item => item.isChecked == true && item.name != answer.name);
     if (elem) {
       elem.isChecked = false;

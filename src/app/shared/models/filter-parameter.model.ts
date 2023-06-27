@@ -1,4 +1,3 @@
-import {IQuestionDisplay} from "./question-display.model";
 
 export interface IFilterParameter {
   category?: number;
