@@ -26,7 +26,7 @@ export class ListeQuestionComponent implements OnInit,OnDestroy{
   filterParam: FilterParameter = new FilterParameter();
 
   levels = LEVEL;
-  greenColor = GREEN_COLOR;
+  greenColor: string = GREEN_COLOR;
   subscription: Subscription = new Subscription();
 
   constructor(private questionService: QuestionService,

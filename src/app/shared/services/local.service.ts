@@ -7,7 +7,7 @@ import  *  as CryptoJS from  'crypto-js';
   providedIn: 'root'
 })
 export class LocalService {
-  key = "$&AxcR?t";
+  key: string = "$&AxcR?t";
   constructor() { }
 
   public saveData(key: string, data: QuestionDisplay[]) {
@@ -18,9 +18,6 @@ export class LocalService {
     let data = localStorage.getItem(key)|| "";
     let resp = this.decrypt(data);
     return JSON.parse(resp);
-  }
-  public removeData(key: string) {
-    localStorage.removeItem(key);
   }
 
   public clearData() {
