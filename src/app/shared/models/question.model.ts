@@ -1,14 +1,4 @@
-
-export interface IQuestion {
-  category?:          string;
-  type?:              string;
-  difficulty?:        string;
-  question?:          string;
-  correct_answer?:    string;
-  incorrect_answers?: string[];
-}
-
-export class Question implements IQuestion{
+export class Question {
   constructor(
     public category?: string,
     public type?: string,
@@ -16,6 +6,6 @@ export class Question implements IQuestion{
     public question?: string,
     public correct_answer?: string,
     public incorrect_answers?: string[]
-
-  ){}
+  ) {
+  }
 }

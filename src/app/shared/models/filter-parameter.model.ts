@@ -1,12 +1,7 @@
-
-export interface IFilterParameter {
-  category?: number;
-  level?: string;
-}
-
-export class FilterParameter implements IFilterParameter{
+export class FilterParameter {
   constructor(
     public category?: number,
     public level?: string,
-  ){}
+  ) {
+  }
 }

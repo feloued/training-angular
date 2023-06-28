@@ -3,3 +3,5 @@ export const LEVEL = [
   { code: 'medium', lib: 'Medium' },
   { code: 'hard', lib: 'Hard' },
 ];
+
+export const GREEN_COLOR = "#198754"

@@ -3,6 +3,7 @@ import {QuestionDisplay} from "../../shared/models/question-display.model";
 import {SouscriptionService} from "../../shared/services/souscription.service";
 import {Router} from "@angular/router";
 import {LocalService} from "../../shared/services/local.service";
+import {GREEN_COLOR} from "../../shared/constants/constant";
 
 @Component({
   selector: 'app-result',

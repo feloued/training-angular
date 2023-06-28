@@ -1,8 +1,5 @@
 import {Question} from "./question.model";
-export interface IResults {
-  results?: Question[];
-}
-export class Results implements IResults{
+export class Results {
   constructor(
     public results?: Question[],
   ){}

@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 import {Categorie} from "../../shared/models/category.model";
 import {FilterParameter} from "../../shared/models/filter-parameter.model";
 import {cloneDeep} from "lodash";
-import {LEVEL} from "../../shared/constants/constant";
+import {GREEN_COLOR, LEVEL} from "../../shared/constants/constant";
 import {Observable, Subscription} from "rxjs";
 
 
@@ -26,6 +26,7 @@ export class ListeQuestionComponent implements OnInit,OnDestroy{
   filterParam: FilterParameter = new FilterParameter();
 
   levels = LEVEL;
+  greenColor = GREEN_COLOR;
   subscription: Subscription = new Subscription();
 
   constructor(private questionService: QuestionService,
@@ -128,7 +129,7 @@ export class ListeQuestionComponent implements OnInit,OnDestroy{
     questionsDisplayCloned.forEach(item => {
       const checkElem = item.answers?.find(elm => elm.isChecked);
       if (checkElem && checkElem.name == item.correct_answer) {
-        checkElem.color = "#198754";
+        checkElem.color = this.greenColor;
         item.isResponse = true;
       } else {
         item.isResponse = false;
@@ -136,7 +137,7 @@ export class ListeQuestionComponent implements OnInit,OnDestroy{
           checkElem.color = "red";
         const trustElem = item.answers?.find(elm => elm.name == item.correct_answer);
         if (trustElem) {
-          trustElem.color = "#198754";
+          trustElem.color = this.greenColor;
           trustElem.isChecked = true;
         }
       }

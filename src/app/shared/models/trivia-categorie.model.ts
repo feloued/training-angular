@@ -1,10 +1,5 @@
 import {Categorie} from "./category.model";
-
-export interface ITriviaCategorie {
-  trivia_categories?: Categorie[];
-}
-
-export class TriviaCategorie implements ITriviaCategorie{
+export class TriviaCategorie {
   constructor(
     public trivia_categories?: Categorie[],
   ){}

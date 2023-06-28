@@ -5,9 +5,9 @@
     </div>
     <div class="card-body">
      <div class="row" *ngFor="let questionDisplay of questionsDisplay">
-       <p class='center'>{{questionDisplay?.question | decode}}</p>
+       <p class='center'>{{questionDisplay?.question! | decode}}</p>
        <div *ngFor='let answer of questionDisplay?.answers' class="col s6 m4" >
-         <button  type="button" class="btn btn-outline-success" [ngStyle]="{'background-color':answer.color }"><span [ngStyle]="{'color':answer.isChecked? 'white': '' }">{{ answer.name | decode}}</span></button>
+         <button  type="button" class="btn btn-outline-success" [ngStyle]="{'background-color':answer.color }"><span [ngStyle]="{'color':answer.isChecked? 'white': '' }">{{ answer.name! | decode}}</span></button>
        </div>
      </div>
     </div>
