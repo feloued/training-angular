@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Build Docker image
         run: |
-          docker build -t angular-training:latest .
+          docker build -t angulartraining:latest .
       - name: Push Docker image
         run: |
           docker tag angulartraining:latest ${{ env.DOCKERHUB_USERNAME }}/angulartraining:latest
