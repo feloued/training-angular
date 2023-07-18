@@ -6,7 +6,7 @@ RUN npm install
 RUN npm run build
 # Stage 2
 FROM nginx:alpine
-COPY --from=node /app/dist/angular-ci /usr/share/nginx/html
+COPY --from=node /app/docs /usr/share/nginx/html
 ADD nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 4200
