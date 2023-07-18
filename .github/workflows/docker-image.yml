@@ -27,3 +27,4 @@ jobs:
         run: |
           docker tag angular-training:latest ${{ env.DOCKER_USERNAME }}/angular-training:latest
           docker push ${{ env.DOCKER_USERNAME }}/angular-training:latest
+
