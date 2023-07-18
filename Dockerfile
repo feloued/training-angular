@@ -1,5 +1,5 @@
 # Stage 1
-FROM node:16.13 as node
+FROM node:18.10 as node
 WORKDIR /app
 COPY . .
 RUN npm install
