@@ -24,5 +24,5 @@ jobs:
           docker build -t angular-training:latest .
       - name: Push Docker image
         run: |
-          docker tag angular-training:latest ${{ env.DOCKERHUB_USERNAME }}/angular-training:latest
-          docker push ${{ env.DOCKERHUB_USERNAME }}/angular-training:latest
+          docker tag angulartraining:latest ${{ env.DOCKERHUB_USERNAME }}/angulartraining:latest
+          docker push ${{ env.DOCKERHUB_USERNAME }}/angulartraining:latest
