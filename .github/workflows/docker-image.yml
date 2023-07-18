@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Login to Docker Hub
-        run: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: Build Docker image
         run: |
           docker build -t angular-training:latest .
