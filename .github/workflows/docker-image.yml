@@ -25,6 +25,7 @@ jobs:
           docker push ghcr.io/${{ secrets.GIT_USERNAME }}/angulartraining:latest
 
   pull:
+    needs: build-and-push
     runs-on: self-hosted
     steps:
             - name: Checkout
