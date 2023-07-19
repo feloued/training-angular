@@ -43,4 +43,4 @@ jobs:
             - name: kill container
               run: docker stop angular-app
             - name: run image
-              run: sudo docker run --rm -d -p 4200:80 --name angular-app ghcr.io/${{ secrets.GIT_USERNAME }}/angulartraining
+              run: sudo docker run --rm -d -p 80:80 --name angular-app ghcr.io/${{ secrets.GIT_USERNAME }}/angulartraining
