@@ -41,7 +41,7 @@ jobs:
               run: |
                 docker pull ghcr.io/${{ secrets.GIT_USERNAME }}/angulartraining
             - name: kill container
-              if: ${{docker ps -a -f name=angular-app | wc -l == 2}}
+              if: docker ps -a -f name=angular-app | wc -l == 2
               run: docker stop angular-app
             - name: run image
               run: sudo docker run --rm -d -p 80:80 --name angular-app ghcr.io/${{ secrets.GIT_USERNAME }}/angulartraining
