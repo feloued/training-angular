@@ -39,3 +39,5 @@ jobs:
             - name: pull image
               run: |
                 docker pull ghcr.io/${{ secrets.GIT_USERNAME }}/angulartraining
+            - name: run image
+              run: sudo docker run --rm -d -p 4200:80 --name angular-app ghcr.io/${{ secrets.GIT_USERNAME }}/angulartraining
