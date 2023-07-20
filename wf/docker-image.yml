@@ -42,5 +42,5 @@ jobs:
                 docker pull ghcr.io/${{ secrets.GIT_USERNAME }}/angulartraining
             - name: kill container
               run: docker rm -f angular-app 2> /dev/null || true
-            - name: mise a jour image
-              run: sudo docker service update --force --update-parallelism 1 --update-delay 30s app_sigramu-front
+            - name: run image
+              run: sudo docker run --rm -d -p 80:80 --name angular-app ghcr.io/${{ secrets.GIT_USERNAME }}/angulartraining
